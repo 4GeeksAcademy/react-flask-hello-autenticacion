@@ -2,6 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			message: null,
+			token: "",
 			demo: [
 				{
 					title: "FIRST",
@@ -20,7 +21,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-
+			signup: async (username, email, password) => {
+				const signup = await fetch (process.env.BACKEND_URL + "/api/signup", {
+					method:"POST", 
+					headers: {
+						"Content-Type":"Application/json"
+					},
+					body:JSON.stringify({
+						email:email, 
+						password:password,
+						username:username
+					})
+				})
+				const data = await signup.json()
+				console.log(data)
+			},
+			login: async (username, password) => {
+				const login = await fetch (process.env.BACKEND_URL + "/api/login", {
+					method:"POST", 
+					headers: {
+						"Content-Type":"Application/json"
+					},
+					body:JSON.stringify({
+						password:password,
+						username:username
+					})
+				})
+				const data = await login.json()
+				console.log(data);
+				setStore({"token":data.access_token})
+				localStorage.setItem("token", data.access_token)
+			},
 			getMessage: async () => {
 				try{
 					// fetching data from the backend

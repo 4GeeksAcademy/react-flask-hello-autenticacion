@@ -1,7 +1,12 @@
-/*
-    home.css: This website contains selectors only used in home.css
 
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+body {
+    background-image: url("https://static.vecteezy.com/system/resources/previews/032/934/104/non_2x/africa-savannah-at-sunset-animals-graze-ancient-trees-free-photo.jpg"); 
+    background-size: cover; 
+    background-position: center; 
+}
+h1 {
+    font-size: 10rem;
+    color: white; /* Cambiado a rojo */
+    border-color: black; /* Borde negro */
+    
+}
